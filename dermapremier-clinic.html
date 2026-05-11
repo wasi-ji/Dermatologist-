@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DermaPremier Clinic – Premium Skincare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --bg: #FCFBF7;
+      --beige: #E8D5C4;
+      --gold: #D4AF37;
+      --ink: #1F1F1F;
+      --muted: #717171;
+      --white: #ffffff;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    /* ===== TYPOGRAPHY ===== */
+    .font-serif { font-family: var(--font-serif); }
+
+    /* ===== UTILITY ===== */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .text-gold { color: var(--gold); }
+    .text-muted { color: var(--muted); }
+    .text-ink { color: var(--ink); }
+    .text-white { color: #fff; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 24px; border-radius: 999px; font-weight: 500;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+      transition: all 0.3s ease; cursor: pointer; border: none; font-family: var(--font-sans);
+    }
+    .btn-primary { background: var(--ink); color: #fff; box-shadow: 0 8px 24px rgba(31,31,31,.12); }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-gold { background: var(--gold); color: #fff; box-shadow: 0 8px 24px rgba(212,175,55,.2); }
+    .btn-gold:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-outline { background: transparent; border: 1px solid rgba(31,31,31,.2); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--ink); }
+    .btn-outline-white { background: transparent; border: 1px solid rgba(255,255,255,.2); color: #fff; }
+    .btn-outline-white:hover { background: #fff; color: var(--ink); border-color: #fff; }
+    .btn-secondary { background: var(--beige); color: var(--ink); }
+    .btn-secondary:hover { opacity: 0.8; }
+    .btn-lg { padding: 16px 48px; font-size: 13px; }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title { margin-bottom: 64px; }
+    .section-title.centered { text-align: center; }
+    .section-subtitle {
+      display: block; color: var(--gold); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.2em; font-size: 11px; margin-bottom: 12px;
+    }
+    .section-heading {
+      font-family: var(--font-serif); font-size: clamp(36px, 5vw, 64px);
+      color: var(--ink); font-weight: 400; line-height: 1.1;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      transition: all 0.5s ease; padding: 24px 0;
+    }
+    header.scrolled {
+      background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); padding: 16px 0;
+      box-shadow: 0 1px 24px rgba(31,31,31,.06);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon {
+      width: 40px; height: 40px; background: var(--ink); border-radius: 10px;
+      transform: rotate(12deg); display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s;
+    }
+    .logo-icon:hover { transform: rotate(0deg); }
+    .logo-icon span {
+      color: #fff; font-family: var(--font-serif); font-weight: 700; font-size: 20px;
+      display: block; transform: rotate(-12deg); transition: transform 0.3s;
+    }
+    .logo-icon:hover span { transform: rotate(0deg); }
+    .logo-name { font-family: var(--font-serif); font-size: 24px; letter-spacing: -0.02em; color: var(--ink); }
+    nav.main-nav { display: flex; align-items: center; gap: 32px; }
+    .main-nav a {
+      font-size: 11px; font-weight: 500; color: rgba(31,31,31,.7);
+      text-transform: uppercase; letter-spacing: 0.15em;
+      transition: color 0.2s; padding: 4px 8px;
+    }
+    .main-nav a:hover { color: var(--ink); }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-phone {
+      display: flex; align-items: center; gap: 6px; font-size: 12px;
+      color: var(--ink); font-weight: 500; padding: 8px 16px; border-radius: 999px;
+      transition: background 0.2s; cursor: pointer;
+    }
+    .btn-phone:hover { background: rgba(232,213,196,.2); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 8px; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--ink);
+      transition: all 0.3s; transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 90; background: #fff;
+      padding: 120px 40px 40px; flex-direction: column; gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--font-serif); font-size: 36px; color: var(--ink); }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .mobile-menu-actions .btn { width: 100%; }
+
+    /* ===== HERO ===== */
+    .hero { padding: 140px 0 96px; position: relative; overflow: hidden; }
+    .hero-inner { display: flex; align-items: center; gap: 64px; }
+    .hero-content { flex: 1; min-width: 0; }
+    .hero-eyebrow {
+      display: block; color: var(--gold); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.3em; font-size: 11px; margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: var(--font-serif); font-size: clamp(48px, 7vw, 88px);
+      line-height: 1.05; color: var(--ink); margin-bottom: 24px; font-weight: 400;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-desc { color: var(--muted); font-size: 17px; max-width: 480px; line-height: 1.7; margin-bottom: 32px; }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-checklist {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px;
+      padding-top: 48px; border-top: 1px solid rgba(232,213,196,.4);
+    }
+    .check-item { display: flex; align-items: center; gap: 12px; }
+    .check-icon { color: var(--gold); flex-shrink: 0; }
+    .check-item span {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+    }
+    .hero-visual { flex: 0 0 45%; position: relative; }
+    .hero-img-wrap {
+      border-radius: 48px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(232,213,196,.5); position: relative; z-index: 2;
+    }
+    .hero-img-wrap img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+    .hero-blur-1 {
+      position: absolute; top: -40px; right: -40px; width: 160px; height: 160px;
+      background: rgba(232,213,196,.3); border-radius: 50%; filter: blur(48px); z-index: 1;
+    }
+    .hero-blur-2 {
+      position: absolute; bottom: -40px; left: -40px; width: 256px; height: 256px;
+      background: rgba(212,175,55,.1); border-radius: 50%; filter: blur(48px); z-index: 1;
+    }
+    .hero-badge {
+      position: absolute; right: -24px; top: 25%; background: rgba(255,255,255,.95);
+      backdrop-filter: blur(8px); padding: 24px; border-radius: 24px;
+      box-shadow: 0 16px 48px rgba(31,31,31,.12); z-index: 10;
+    }
+    .badge-avatars { display: flex; margin-bottom: 8px; }
+    .badge-avatars img {
+      width: 32px; height: 32px; border-radius: 50%; border: 2px solid #fff;
+      margin-left: -8px; object-fit: cover;
+    }
+    .badge-avatars img:first-child { margin-left: 0; }
+    .badge-label {
+      font-size: 9px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.2em; color: var(--gold); margin-bottom: 4px;
+    }
+    .badge-count { font-family: var(--font-serif); font-size: 18px; color: var(--ink); }
+    .badge-stars { display: flex; gap: 2px; margin-top: 4px; }
+    .star-icon { color: var(--gold); font-size: 12px; }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar { background: var(--ink); padding: 64px 0; position: relative; overflow: hidden; }
+    .trust-bar-inner {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center;
+    }
+    .trust-stat { }
+    .trust-value {
+      font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 48px);
+      color: var(--beige); margin-bottom: 8px;
+    }
+    .trust-label {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em;
+      color: rgba(255,255,255,.5); font-weight: 500;
+    }
+    .trust-bg-text {
+      position: absolute; top: 0; right: 0; font-family: var(--font-serif);
+      font-size: 160px; line-height: 1; opacity: 0.04; white-space: nowrap;
+      user-select: none; pointer-events: none; color: #fff;
+    }
+
+    /* ===== SERVICES ===== */
+    .services-section { padding: 96px 0; background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .service-card {
+      background: #fff; border-radius: 24px; overflow: hidden;
+      box-shadow: 0 2px 16px rgba(31,31,31,.04); border: 1px solid rgba(232,213,196,.3);
+      transition: all 0.5s ease;
+    }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 24px 64px rgba(31,31,31,.1); }
+    .service-img { height: 256px; overflow: hidden; position: relative; }
+    .service-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s ease; display: block;
+    }
+    .service-card:hover .service-img img { transform: scale(1.1); }
+    .service-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.4), transparent);
+      display: flex; align-items: flex-end; padding: 24px;
+    }
+    .service-icon-wrap {
+      background: rgba(255,255,255,.9); backdrop-filter: blur(4px);
+      padding: 12px; border-radius: 16px; display: flex;
+    }
+    .service-body { padding: 32px; }
+    .service-title { font-family: var(--font-serif); font-size: 24px; margin-bottom: 12px; color: var(--ink); }
+    .service-desc { color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 24px; }
+    .service-footer { display: flex; align-items: center; justify-content: space-between; }
+    .service-learn {
+      font-size: 13px; font-weight: 500; color: var(--ink); display: flex; align-items: center;
+      gap: 4px; transition: color 0.2s; cursor: pointer; background: none; border: none;
+      font-family: var(--font-sans);
+    }
+    .service-learn:hover { color: var(--gold); }
+    .service-wa {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(232,213,196,.2);
+      display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .service-wa:hover { background: var(--beige); }
+
+    /* ===== BEFORE/AFTER ===== */
+    .results-section { padding: 96px 0; background: var(--bg); }
+    .before-after-wrap { max-width: 900px; margin: 0 auto; position: relative; }
+    .before-after-card {
+      border-radius: 48px; overflow: hidden; box-shadow: 0 32px 64px rgba(31,31,31,.1);
+    }
+    .ba-images { display: flex; }
+    .ba-side { flex: 1; position: relative; }
+    .ba-side img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+    .ba-label {
+      position: absolute; top: 24px; padding: 8px 16px; border-radius: 999px;
+      font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700;
+    }
+    .ba-label.before { left: 24px; background: rgba(31,31,31,.8); backdrop-filter: blur(4px); color: #fff; }
+    .ba-label.after { right: 24px; background: var(--gold); color: #fff; box-shadow: 0 4px 16px rgba(212,175,55,.3); }
+    .ba-hover-card {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      pointer-events: none; opacity: 0; transition: opacity 0.3s;
+    }
+    .before-after-wrap:hover .ba-hover-card { opacity: 1; }
+    .ba-story {
+      background: rgba(255,255,255,.95); backdrop-filter: blur(8px);
+      padding: 32px; border-radius: 24px; text-align: center; max-width: 320px;
+      box-shadow: 0 24px 64px rgba(31,31,31,.15); transform: scale(0.95);
+      pointer-events: auto;
+      transition: transform 0.3s;
+    }
+    .before-after-wrap:hover .ba-story { transform: scale(1); }
+    .ba-story-label {
+      color: var(--gold); text-transform: uppercase; letter-spacing: 0.2em;
+      font-size: 9px; font-weight: 700; margin-bottom: 8px;
+    }
+    .ba-story h4 { font-family: var(--font-serif); font-size: 22px; margin-bottom: 16px; }
+    .ba-story p { color: var(--muted); font-size: 13px; line-height: 1.6; margin-bottom: 24px; }
+
+    /* ===== WHY US ===== */
+    .why-section { padding: 96px 0; background: var(--white); position: relative; overflow: hidden; }
+    .why-bg-skew {
+      position: absolute; top: 0; right: 0; width: 33%; height: 100%;
+      background: rgba(232,213,196,.1); transform: skewX(-12deg); transform-origin: top;
+    }
+    .why-inner { display: flex; align-items: center; gap: 64px; position: relative; z-index: 1; }
+    .why-content { flex: 1; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .why-card {
+      padding: 32px; border-radius: 24px; background: var(--bg);
+      border: 1px solid rgba(232,213,196,.2); transition: all 0.3s;
+    }
+    .why-card:hover { border-color: rgba(212,175,55,.3); transform: scale(1.02); }
+    .why-icon { color: var(--gold); margin-bottom: 16px; }
+    .why-card h4 { font-family: var(--font-serif); font-size: 20px; margin-bottom: 8px; }
+    .why-card p { color: var(--muted); font-size: 11px; line-height: 1.7; }
+    .why-visual { flex: 0 0 45%; }
+    .why-img-wrap {
+      border-radius: 48px; overflow: hidden;
+      box-shadow: 0 32px 64px rgba(31,31,31,.1); position: relative;
+    }
+    .why-img-wrap img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .why-img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(212,175,55,.1); mix-blend-mode: overlay; pointer-events: none;
+    }
+
+    /* ===== DOCTOR ===== */
+    .doctor-section {
+      padding: 96px 0; background: var(--ink); color: #fff;
+      position: relative; overflow: hidden;
+    }
+    .doctor-bg-text {
+      position: absolute; left: -20px; bottom: -40px; font-family: var(--font-serif);
+      font-size: 200px; line-height: 1; font-style: italic; opacity: 0.05;
+      color: #fff; pointer-events: none; user-select: none; white-space: nowrap;
+    }
+    .doctor-inner { display: flex; align-items: center; gap: 64px; position: relative; z-index: 2; }
+    .doctor-img-side { flex: 0 0 38%; }
+    .doctor-img-frame {
+      padding: 32px 32px 0; border-radius: 64px;
+      border: 2px solid rgba(232,213,196,.2); display: inline-block; position: relative;
+    }
+    .doctor-img-frame img { width: 100%; border-radius: 48px; display: block; }
+    .doctor-years {
+      position: absolute; bottom: -32px; right: -32px;
+      background: var(--gold); padding: 32px; border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(212,175,55,.3); text-align: center; color: #fff;
+    }
+    .doctor-years .num { font-family: var(--font-serif); font-size: 40px; line-height: 1; }
+    .doctor-years .lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.8; }
+    .doctor-content { flex: 1; min-width: 0; }
+    .doctor-eyebrow {
+      display: block; color: var(--gold); text-transform: uppercase;
+      letter-spacing: 0.3em; font-size: 11px; margin-bottom: 16px; font-weight: 500;
+    }
+    .doctor-name {
+      font-family: var(--font-serif); font-size: clamp(36px, 4.5vw, 60px);
+      color: var(--beige); margin-bottom: 12px; font-weight: 400; line-height: 1.1;
+    }
+    .doctor-title { color: var(--beige); font-size: 17px; font-style: italic; margin-bottom: 24px; }
+    .doctor-quote { color: rgba(255,255,255,.7); font-size: 17px; line-height: 1.7; max-width: 580px; margin-bottom: 32px; }
+    .doctor-skills { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
+    .doctor-skill {
+      padding: 10px 20px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.2); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,.8);
+    }
+    .doctor-footer {
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; gap: 32px;
+    }
+    .doctor-sig { height: 64px; filter: invert(1) brightness(2); opacity: 0.4; }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-section { padding: 96px 0; background: var(--white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .testimonial-card {
+      padding: 40px; border-radius: 40px; background: var(--bg);
+      border: 1px solid rgba(232,213,196,.2); position: relative;
+      transition: transform 0.3s;
+    }
+    .testimonial-card:hover { transform: translateY(-5px); }
+    .testimonial-stars { display: flex; gap: 4px; margin-bottom: 24px; }
+    .testimonial-text {
+      color: var(--ink); font-style: italic; font-size: 16px;
+      line-height: 1.7; margin-bottom: 32px;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 16px; }
+    .testimonial-avatar {
+      width: 48px; height: 48px; border-radius: 50%; background: var(--beige);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif); font-size: 20px; color: var(--ink); flex-shrink: 0;
+    }
+    .testimonial-name { font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+    .testimonial-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .testimonial-quote {
+      position: absolute; top: 32px; right: 32px; font-family: var(--font-serif);
+      font-size: 80px; color: var(--gold); opacity: 0.1; line-height: 1;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-section { padding: 96px 0; background: var(--bg); }
+    .faq-inner { max-width: 800px; margin: 0 auto; }
+    .faq-box {
+      background: #fff; border-radius: 48px; padding: 64px;
+      box-shadow: 0 8px 40px rgba(31,31,31,.06);
+      border: 1px solid rgba(232,213,196,.2);
+    }
+    .faq-item { border-bottom: 1px solid rgba(232,213,196,.4); padding: 24px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      text-align: left; cursor: pointer; background: none; border: none;
+      font-family: var(--font-sans); padding: 0;
+    }
+    .faq-q-text {
+      font-family: var(--font-serif); font-size: 20px; color: var(--ink);
+      transition: color 0.2s; padding-right: 24px;
+    }
+    .faq-question:hover .faq-q-text { color: var(--gold); }
+    .faq-icon { color: var(--ink); flex-shrink: 0; font-size: 20px; line-height: 1; }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s;
+      opacity: 0;
+    }
+    .faq-answer.open { max-height: 400px; opacity: 1; }
+    .faq-answer p { padding-top: 16px; color: var(--muted); font-size: 13px; line-height: 1.8; max-width: 640px; }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section { padding: 96px 0; }
+    .cta-box {
+      background: var(--ink); border-radius: 64px; padding: 96px;
+      text-align: center; color: #fff; position: relative; overflow: hidden;
+      transition: transform 0.3s; box-shadow: 0 32px 80px rgba(31,31,31,.2);
+    }
+    .cta-box:hover { transform: scale(1.005); }
+    .cta-texture {
+      position: absolute; inset: 0; opacity: 0.06; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .cta-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .cta-eyebrow {
+      display: block; color: var(--gold); text-transform: uppercase;
+      letter-spacing: 0.4em; font-size: 11px; font-weight: 500; margin-bottom: 32px;
+    }
+    .cta-title {
+      font-family: var(--font-serif); font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.1; margin-bottom: 32px;
+    }
+    .cta-desc { color: rgba(255,255,255,.7); font-size: 17px; margin-bottom: 48px; line-height: 1.6; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--white); padding: 96px 0 48px; border-top: 1px solid rgba(232,213,196,.4); }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 64px; margin-bottom: 96px; }
+    .footer-brand p { color: var(--muted); font-size: 13px; line-height: 1.7; margin: 24px 0; }
+    .footer-social { display: flex; gap: 12px; }
+    .social-btn {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; font-size: 16px; color: var(--ink); text-decoration: none;
+    }
+    .social-btn:hover { background: var(--gold); color: #fff; }
+    .footer-col h5 {
+      font-weight: 700; font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.2em; margin-bottom: 32px; color: var(--ink);
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact { display: flex; flex-direction: column; gap: 16px; }
+    .contact-row { display: flex; gap: 12px; font-size: 13px; color: var(--muted); }
+    .contact-icon { color: var(--gold); flex-shrink: 0; }
+    .map-embed { border-radius: 16px; overflow: hidden; height: 192px; filter: grayscale(1); transition: filter 0.5s; }
+    .map-embed:hover { filter: grayscale(0); }
+    .map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .footer-bottom {
+      padding-top: 48px; border-top: 1px solid rgba(232,213,196,.4);
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .footer-bottom p { font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
+    .footer-legal { display: flex; gap: 32px; }
+    .footer-legal a {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em;
+      font-weight: 700; color: var(--ink); transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ===== STICKY ACTIONS ===== */
+    .sticky-actions {
+      position: fixed; bottom: 32px; right: 32px; z-index: 200;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .sticky-btn {
+      width: 56px; height: 56px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; cursor: pointer;
+      box-shadow: 0 8px 32px rgba(31,31,31,.2); transition: transform 0.2s;
+      position: relative; text-decoration: none; border: none; font-family: var(--font-sans);
+    }
+    .sticky-btn:hover { transform: scale(1.1); }
+    .sticky-btn:active { transform: scale(0.9); }
+    .sticky-wa { background: #25D366; color: #fff; }
+    .sticky-appt { background: var(--ink); color: #fff; }
+    .sticky-tooltip {
+      position: absolute; right: calc(100% + 16px); top: 50%;
+      transform: translateY(-50%); background: #fff; color: var(--ink);
+      padding: 8px 16px; border-radius: 12px; font-size: 11px; font-weight: 700;
+      white-space: nowrap; box-shadow: 0 4px 24px rgba(31,31,31,.12);
+      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    }
+    .sticky-btn:hover .sticky-tooltip { opacity: 1; }
+
+    /* ===== SVG ICONS ===== */
+    .icon { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .icon-sm { width: 16px; height: 16px; }
+    .icon-lg { width: 28px; height: 28px; }
+    .icon-xl { width: 32px; height: 32px; }
+    .star-filled { fill: var(--gold); stroke: var(--gold); }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-in {
+      opacity: 0; transition: opacity 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-badge { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .why-inner { flex-direction: column; }
+      .why-visual { width: 100%; }
+      .doctor-inner { flex-direction: column; }
+      .doctor-img-side { width: 80%; }
+    }
+    @media (max-width: 768px) {
+      nav.main-nav, .header-actions { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { flex-direction: column; }
+      .hero-visual { width: 100%; }
+      .services-grid { grid-template-columns: 1fr; }
+      .trust-bar-inner { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .ba-images { flex-direction: column; }
+      .ba-side img { aspect-ratio: 1/1; }
+      .cta-box { padding: 64px 32px; }
+      .faq-box { padding: 40px 24px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .hero-checklist { grid-template-columns: 1fr; }
+      .hero-title { font-size: 42px; }
+      .doctor-bg-text { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#home" class="logo">
+        <div class="logo-icon"><span>D</span></div>
+        <span class="logo-name">DermaPremier</span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#results">Results</a>
+        <a href="#doctor">Doctor</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <span class="btn-phone">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.5 1.17 2 2 0 012.49 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.46A16 16 0 0016.46 17l.82-.82a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0124 18.5v2.42z"/></svg>
+          +1 234 567 890
+        </span>
+        <button class="btn btn-primary">Book Appointment</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#home" class="mobile-link">Home</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#results" class="mobile-link">Results</a>
+  <a href="#doctor" class="mobile-link">Doctor</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <div class="mobile-menu-actions">
+    <button class="btn btn-primary">Book Appointment</button>
+    <button class="btn btn-secondary">WhatsApp Us</button>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <span class="hero-eyebrow fade-in-up">Est. 2014 &bull; Premium Skincare</span>
+        <h1 class="hero-title fade-in-up" style="transition-delay:.1s">
+          Clear, Healthy<br>
+          <em>Skin Starts</em><br>
+          With Expert Care.
+        </h1>
+        <p class="hero-desc fade-in-up" style="transition-delay:.2s">
+          Professional dermatology treatments for acne, pigmentation, hair loss, and skin rejuvenation. Your journey to radiance begins here.
+        </p>
+        <div class="hero-cta fade-in-up" style="transition-delay:.3s">
+          <button class="btn btn-gold btn-lg">
+            Book Consultation
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <button class="btn btn-outline btn-lg">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:#16a34a"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Chat on WhatsApp
+          </button>
+        </div>
+        <div class="hero-checklist fade-in" style="transition-delay:.5s">
+          <div class="check-item">
+            <svg class="icon check-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Expert Doctors</span>
+          </div>
+          <div class="check-item">
+            <svg class="icon check-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Advanced Tech</span>
+          </div>
+          <div class="check-item">
+            <svg class="icon check-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Personalized Plans</span>
+          </div>
+          <div class="check-item">
+            <svg class="icon check-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Luxury Environment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-in" style="transition-delay:.2s">
+        <div class="hero-blur-1"></div>
+        <div class="hero-blur-2"></div>
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1200&auto=format&fit=crop" alt="Premium Clinic Interior" referrerpolicy="no-referrer"/>
+        </div>
+        <div class="hero-badge">
+          <div class="badge-avatars">
+            <img src="https://i.pravatar.cc/100?img=16" alt="Patient"/>
+            <img src="https://i.pravatar.cc/100?img=17" alt="Patient"/>
+            <img src="https://i.pravatar.cc/100?img=18" alt="Patient"/>
+          </div>
+          <div class="badge-label">Trusted Clinic</div>
+          <div class="badge-count">5,000+ Happy Patients</div>
+          <div class="badge-stars">
+            <span class="star-icon">★</span><span class="star-icon">★</span>
+            <span class="star-icon">★</span><span class="star-icon">★</span>
+            <span class="star-icon">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-stat fade-in-up"><div class="trust-value">5000+</div><div class="trust-label">Patients Treated</div></div>
+      <div class="trust-stat fade-in-up" style="transition-delay:.1s"><div class="trust-value">10+</div><div class="trust-label">Years Experience</div></div>
+      <div class="trust-stat fade-in-up" style="transition-delay:.2s"><div class="trust-value">Modern</div><div class="trust-label">Treatments</div></div>
+      <div class="trust-stat fade-in-up" style="transition-delay:.3s"><div class="trust-value">Premium</div><div class="trust-label">Care Status</div></div>
+    </div>
+  </div>
+  <div class="trust-bg-text">DERMAPREMIER CLINIC LUXURY DERMATOLOGY</div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-title centered">
+      <span class="section-subtitle fade-in-up">Our Expertise</span>
+      <h2 class="section-heading fade-in-up" style="transition-delay:.1s">Professional Skin Treatments</h2>
+    </div>
+    <div class="services-grid" id="services-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE/AFTER ===== -->
+<section class="results-section" id="results">
+  <div class="container">
+    <div class="section-title centered">
+      <span class="section-subtitle fade-in-up">Transformations</span>
+      <h2 class="section-heading fade-in-up" style="transition-delay:.1s">Real Results, Real Confidence</h2>
+    </div>
+    <div class="before-after-wrap fade-in-up">
+      <div class="before-after-card">
+        <div class="ba-images">
+          <div class="ba-side">
+            <img src="https://images.unsplash.com/photo-1596755389378-7d0d244f05e0?q=80&w=800&auto=format&fit=crop" alt="Before Treatment" referrerpolicy="no-referrer"/>
+            <div class="ba-label before">Before</div>
+          </div>
+          <div class="ba-side">
+            <img src="https://images.unsplash.com/photo-1552046122-03184de85e08?q=80&w=800&auto=format&fit=crop" alt="After Treatment" referrerpolicy="no-referrer"/>
+            <div class="ba-label after">After</div>
+          </div>
+        </div>
+        <div class="ba-hover-card">
+          <div class="ba-story">
+            <div class="ba-story-label">Patient Story</div>
+            <h4>Acne Scar Rejuvenation</h4>
+            <p>"I finally have the confidence to go out without makeup. Dr. Smith truly changed my life."</p>
+            <button class="btn btn-outline">See More Stories</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section class="why-section">
+  <div class="why-bg-skew"></div>
+  <div class="container">
+    <div class="why-inner">
+      <div class="why-content">
+        <div class="section-title">
+          <span class="section-subtitle fade-in-up">Why DermaPremier</span>
+          <h2 class="section-heading fade-in-up" style="transition-delay:.1s">Your Skin Deserves The Very Best</h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card fade-in-up">
+            <div class="why-icon">
+              <svg class="icon icon-xl" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4>Personalized Care</h4>
+            <p>Treatments tailored to your unique skin biology.</p>
+          </div>
+          <div class="why-card fade-in-up" style="transition-delay:.1s">
+            <div class="why-icon">
+              <svg class="icon icon-xl" viewBox="0 0 24 24"><path d="M12 3l1.09 3.26L16.37 6l-2.62 2 .95 3.26L12 9.5l-2.7 1.76.95-3.26L7.63 6l3.28-.74z"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <h4>Advanced Tech</h4>
+            <p>World-class laser and medical equipment.</p>
+          </div>
+          <div class="why-card fade-in-up" style="transition-delay:.2s">
+            <div class="why-icon">
+              <svg class="icon icon-xl" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h4>Elite Comfort</h4>
+            <p>A luxury environment designed for your relaxation.</p>
+          </div>
+          <div class="why-card fade-in-up" style="transition-delay:.3s">
+            <div class="why-icon">
+              <svg class="icon icon-xl" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <h4>Certified Expertise</h4>
+            <p>Board-certified dermatologists with decades of experience.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual fade-in" style="transition-delay:.3s">
+        <div class="why-img-wrap">
+          <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop" alt="Clinic Interior" referrerpolicy="no-referrer"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOCTOR ===== -->
+<section class="doctor-section" id="doctor">
+  <div class="doctor-bg-text">Dr. Hina Suhail </div>
+  <div class="container">
+    <div class="doctor-inner">
+      <div class="doctor-img-side fade-in" style="transition-delay:.1s">
+        <div class="doctor-img-frame">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71f1e3c770?q=80&w=1000&auto=format&fit=crop" alt="Dr. Hina Suhail" referrerpolicy="no-referrer"/>
+          <div class="doctor-years">
+            <div class="num">15+</div>
+            <div class="lbl">Years Expert</div>
+          </div>
+        </div>
+      </div>
+      <div class="doctor-content fade-in-up" style="transition-delay:.2s">
+        <span class="doctor-eyebrow">Meet the Expert</span>
+        <h2 class="doctor-name">Dr. Hina Suhail,</h2>
+        <div class="doctor-title">Board-Certified Dermatologist &bull; Harvard Medical Alumna</div>
+        <p class="doctor-quote">
+          "My philosophy is simple: healthy skin is the foundation of beauty. I combine clinical innovation with a luxury patient experience to deliver results that don't just look better, but feel better. Your skin is your story, and I'm here to help you tell it with confidence."
+        </p>
+        <div class="doctor-skills">
+          <span class="doctor-skill">Dermato-oncology</span>
+          <span class="doctor-skill">Cosmetic Procedures</span>
+          <span class="doctor-skill">Laser Therapy Specialist</span>
+        </div>
+        <div class="doctor-footer">
+          <button class="btn btn-gold">View Full Biography</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-title centered">
+      <span class="section-subtitle fade-in-up">Kind Words</span>
+      <h2 class="section-heading fade-in-up" style="transition-delay:.1s">Trust From Our Patients</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in-up">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">"The team at DermaPremier is just incredible. The clinic is beautiful, and my skin has never looked better. Highly recommend the laser treatment."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">J</div>
+          <div>
+            <div class="testimonial-name">Jessica R.</div>
+            <div class="testimonial-role">Skincare Patient</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in-up" style="transition-delay:.1s">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">"Professional, discrete, and most importantly — effective. My results after 4 sessions of PRP were beyond what I expected."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Michael T.</div>
+            <div class="testimonial-role">Hair Loss Patient</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in-up" style="transition-delay:.2s">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="icon icon-sm star-filled" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="testimonial-text">"Dr. Hina has a great eye for natural beauty. My fillers look so subtle and refreshed, not overdone at all. Truly the best."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">E</div>
+          <div>
+            <div class="testimonial-name">Emily W.</div>
+            <div class="testimonial-role">Anti-Aging Patient</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="section-title centered">
+        <span class="section-subtitle fade-in-up">Common Inquiries</span>
+        <h2 class="section-heading fade-in-up" style="transition-delay:.1s">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-box fade-in-up" id="faq-box">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box fade-in-up">
+      <div class="cta-texture"></div>
+      <div class="cta-content">
+        <span class="cta-eyebrow">Start Your Journey</span>
+        <h2 class="cta-title">Ready to Improve Your Skin Health?</h2>
+        <p class="cta-desc">Book your consultation today and speak directly with a professional dermatologist.</p>
+        <div class="cta-actions">
+          <button class="btn btn-gold btn-lg">Book Appointment Now</button>
+          <button class="btn btn-outline-white btn-lg">WhatsApp Inquiry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon"><span>D</span></div>
+          <span class="logo-name">DermaPremier</span>
+        </div>
+        <p>Modern clinical excellence meets luxury skincare. We are dedicated to providing the highest standard of dermatological care in a serene environment.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#results">Before &amp; After Gallery</a></li>
+          <li><a href="#doctor">About Dr. Hina</a></li>
+          <li><a href="#">Patient Portal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col" id="contact">
+        <h5>Visit Us</h5>
+        <div class="footer-contact">
+          <div class="contact-row">
+            <svg class="icon contact-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>123 Luxury Skin Plaza, Beverly Hills, CA 90210</span>
+          </div>
+          <div class="contact-row">
+            <svg class="icon contact-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Mon – Fri: 9am – 7pm<br/>Sat: 10am – 4pm</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Location</h5>
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105658.26126601!2d-118.42398505!3d34.05369095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bc04d6d147ab%3A0xd6c7c379fd973d7d!2sBeverly%20Hills%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Clinic Location"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 DermaPremier Clinic. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== STICKY BUTTONS ===== -->
+<div class="sticky-actions">
+  <a href="https://wa.me/yournumber" class="sticky-btn sticky-wa" aria-label="WhatsApp">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <span class="sticky-tooltip">Chat on WhatsApp</span>
+  </a>
+  <button class="sticky-btn sticky-appt" aria-label="Book Appointment">
+    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span class="sticky-tooltip">Book Appointment</span>
+  </button>
+</div>
+
+<script>
+  // ===== DATA =====
+  const services = [
+    {
+      title: "Acne Treatment",
+      description: "Advanced solutions for active acne and persistent scarring using personalized medical protocols.",
+      image: "https://images.unsplash.com/photo-1596755389378-7d0d244f05e0?q=80&w=800&auto=format&fit=crop",
+      icon: `<svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 16a1 1 0 111-1 1 1 0 01-1 1zm1-5.16V14a1 1 0 01-2 0v-2a1 1 0 011-1 3 3 0 10-3-3 1 1 0 01-2 0 5 5 0 115 5z"/></svg>`
+    },
+    {
+      title: "Pigmentation",
+      description: "Even out your skin tone and remove dark spots with our targeted laser and pharmaceutical therapies.",
+      image: "https://images.unsplash.com/photo-1552046122-03184de85e08?q=80&w=800&auto=format&fit=crop",
+      icon: `<svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
+    },
+    {
+      title: "Anti-Aging",
+      description: "Reduce fine lines and restore volume with Botox, fillers, and advanced rejuvenation techniques.",
+      image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop",
+      icon: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
+    },
+    {
+      title: "Laser Treatment",
+      description: "State-of-the-art laser technology for hair removal, vein reduction, and deep tissue remodeling.",
+      image: "https://images.unsplash.com/photo-1620916297397-a4a5434cbd10?q=80&w=800&auto=format&fit=crop",
+      icon: `<svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+    },
+    {
+      title: "Hair Loss",
+      description: "Innovative hair restoration treatments including PRP and clinical grade growth stimulants.",
+      image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=800&auto=format&fit=crop",
+      icon: `<svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`
+    },
+    {
+      title: "Skin Rejuvenation",
+      description: "Medical-grade facials, peels, and microneedling to reveal your most radiant complexion.",
+      image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc2069?q=80&w=800&auto=format&fit=crop",
+      icon: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>`
+    }
+  ];
+
+  const faqs = [
+    { q: "Is the treatment painful?", a: "Most of our medical procedures are designed for comfort. We use high-quality topical numbing agents and advanced technology that minimizes discomfort. Each patient's sensitivity is considered." },
+    { q: "How many sessions are needed?", a: "This varies significantly based on the condition being treated. For laser hair removal, typically 6–8 sessions are needed, while acne treatments may show results in 3–4 sessions." },
+    { q: "Are treatments safe?", a: "Yes, all our treatments are FDA-approved or equivalent and performed by board-certified dermatologists or trained medical professionals using sterilized, clinical-grade equipment." },
+    { q: "How long before results appear?", a: "Some treatments like dermal fillers show immediate results. Skin rejuvenation and laser treatments usually show peak results after a few weeks as collagen production increases." },
+    { q: "Is online consultation available?", a: "Yes! We offer teledermatology for initial assessments and follow-ups. You can book an online appointment via our WhatsApp or booking portal." }
+  ];
+
+  // ===== RENDER SERVICES =====
+  const servicesGrid = document.getElementById('services-grid');
+  services.forEach((s, i) => {
+    servicesGrid.innerHTML += `
+      <div class="service-card fade-in-up" style="transition-delay:${i * 0.08}s">
+        <div class="service-img">
+          <img src="${s.image}" alt="${s.title}" referrerpolicy="no-referrer"/>
+          <div class="service-img-overlay">
+            <div class="service-icon-wrap" style="color:var(--gold)">${s.icon}</div>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3 class="service-title">${s.title}</h3>
+          <p class="service-desc">${s.description}</p>
+          <div class="service-footer">
+            <button class="service-learn">
+              Learn More
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <a href="https://wa.me/yournumber?text=Hi, I'm interested in ${encodeURIComponent(s.title)}" class="service-wa" aria-label="WhatsApp">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  // ===== RENDER FAQs =====
+  const faqBox = document.getElementById('faq-box');
+  faqs.forEach((f, i) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = `
+      <button class="faq-question" aria-expanded="false">
+        <span class="faq-q-text">${f.q}</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer" id="faq-answer-${i}">
+        <p>${f.a}</p>
+      </div>
+    `;
+    faqBox.appendChild(item);
+
+    const btn = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    const icon = item.querySelector('.faq-icon');
+    btn.addEventListener('click', () => {
+      const isOpen = answer.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach(ic => ic.textContent = '+');
+      document.querySelectorAll('.faq-question').forEach(q => q.setAttribute('aria-expanded','false'));
+      if (!isOpen) {
+        answer.classList.add('open');
+        icon.textContent = '−';
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+
+  // ===== HEADER SCROLL =====
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ===== HAMBURGER =====
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ===== INTERSECTION OBSERVER (animations) =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in-up, .fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
